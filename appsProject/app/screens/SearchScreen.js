@@ -1,33 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 import SearchBar from '../components/SearchBar';
-import yelp from '../api/yelp';
-import constants from '../constants';
+import useResults from '../hooks/useResults';
 
 const SearchScreen = ({ navigation }) => {
   const [term, setTerm] = useState('');
-  const [result, setResult] = useState([]);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    searchApi('pizza');
-  }, []);
-
-  const searchApi = async (searchTerm) => {
-    try {
-      const response = await yelp.get('/search', {
-        params: {
-          limit: 50,
-          term: searchTerm,
-          location: 'san jose',
-        },
-      });
-      setResult(response.data.businesses);
-    } catch (err) {
-      setError(constants.GENERAL_ERROR_MESSAGE);
-    }
-  };
+  const [searchApi, result, error] = useResults();
 
   const goBack = () => {
     navigation.goBack();
