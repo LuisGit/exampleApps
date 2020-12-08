@@ -7,6 +7,7 @@ const searchStyle = StyleSheet.create({
     borderRadius: 5,
     marginHorizontal: 5,
     flexDirection: 'row',
+    marginBottom: 10,
   },
   textInput: {
     flex: 1,
