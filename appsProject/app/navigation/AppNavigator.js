@@ -17,7 +17,13 @@ const AppNavigator = () => {
             gesturesEnabled: false,
           }),
         },
-        { headerTitleAlign: 'center' }
+        {
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: '#f4511e',
+          },
+          headerTintColor: '#fff',
+        }
       )}>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen

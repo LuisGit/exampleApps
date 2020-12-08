@@ -39,8 +39,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 14,
+    fontSize: 18,
     fontWeight: 'bold',
+    marginVertical: 5,
   },
   image: {
     width: 300,
