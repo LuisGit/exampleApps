@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TextInput } from 'react-native';
-import searchStyle from '../styles/searchScreen';
+import searchStyle from '../../styles/searchScreen';
 import Icon from 'react-native-vector-icons/Feather';
 
 const SearchBar = ({ term, onTermChange, onTermSubmit }) => {

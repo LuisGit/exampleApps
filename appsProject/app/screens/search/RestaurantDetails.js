@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
-import { doGet } from '../api/yelp';
+import {
+  ActivityIndicator,
+  View,
+  Text,
+  FlatList,
+  Image,
+  StyleSheet,
+} from 'react-native';
+import { doGet } from '../../api/yelp';
 
 const RestaurantDetails = ({ route }) => {
   const [details, setDetails] = useState(null);
@@ -21,13 +28,19 @@ const RestaurantDetails = ({ route }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Restaurant Details {details.name}</Text>
-      <FlatList
-        data={details.photos}
-        keyExtractor={(item) => item}
-        renderItem={({ item }) => {
-          return <Image source={{ uri: item }} style={styles.image} />;
-        }}
-      />
+      {details.photos.length === 0 ? (
+        <View>
+          <ActivityIndicator size="large" color="#00ff00" />
+        </View>
+      ) : (
+        <FlatList
+          data={details.photos}
+          keyExtractor={(item) => item}
+          renderItem={({ item }) => {
+            return <Image source={{ uri: item }} style={styles.image} />;
+          }}
+        />
+      )}
     </View>
   );
 };

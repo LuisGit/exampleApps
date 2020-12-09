@@ -3,8 +3,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 //Screens
 import HomeScreen from '../screens/HomeScreen';
-import SearchScreen from '../screens/SearchScreen';
-import RestaurantDetails from '../screens/RestaurantDetails';
+import BusinessSearch from '../screens/search/SearchScreen';
+import RestaurantDetails from '../screens/search/RestaurantDetails';
+import Notes from '../screens/notes/NotesHome';
 
 const Stack = createStackNavigator();
 
@@ -27,14 +28,19 @@ const AppNavigator = () => {
       )}>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen
-        name="Search"
-        component={SearchScreen}
+        name="BusinessSearch"
+        component={BusinessSearch}
         options={{ title: 'Business Search' }}
       />
       <Stack.Screen
         name="RestaurantDetails"
         component={RestaurantDetails}
         options={{ title: 'Details' }}
+      />
+      <Stack.Screen
+        name="Notes"
+        component={Notes}
+        options={{ title: 'Notes' }}
       />
     </Stack.Navigator>
   );

@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import RestaurantCard from '../components/RestaurantCard';
+import RestaurantCard from '../../components/search/RestaurantCard';
 
 const ResultList = ({ title, data }) => {
   const navigation = useNavigation();
