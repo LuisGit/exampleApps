@@ -6,15 +6,17 @@ const constants = {
     {
       key: 'one',
       title: 'About me!',
-      text: 'Description.\nSay something cool',
-      image: require('../app/assets/images/search.png'),
+      text:
+        'Hi there!,I am  Luis, a father, Developer, musician and christian guy that tries to balance all that falls into that bag , does it sound familiar? As a developer I have more than 15 years of experience working mobile and other technologies, Techonology changes so fast that you have to learn every day a little bit.',
+      image: require('../app/assets/images/juggling.png'),
       backgroundColor: '#59b2ab',
     },
     {
       key: 'two',
       title: 'About this app',
-      text: 'Other cool stuff',
-      image: require('../app/assets/images/search.png'),
+      text:
+        'This is a simple app that I build during some spare time. Besides references of apps I can provide, it is nice to have a tiny that uses thing you like. Here you will find simple examples of flows that are used every day in most commercial applications',
+      image: require('../app/assets/images/mobileConcept.jpg'),
       backgroundColor: '#febe29',
     },
     {

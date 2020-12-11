@@ -15,7 +15,7 @@ export default SliderView;
 const styles = StyleSheet.create({
   slide: {
     flex: 1,
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
   },
   title: {
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '90%',
-    height: '90%',
+    height: '60%',
     resizeMode: 'contain',
   },
   text: {},
