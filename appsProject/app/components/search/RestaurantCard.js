@@ -1,10 +1,27 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, ActivityIndicator, StyleSheet } from 'react-native';
 
 const ResturantCard = ({ item }) => {
+  const [loading, setLoading] = useState(true);
+
+  const onLoadEnd = () => {
+    setLoading(false);
+  };
+
   return (
     <View style={styles.container}>
-      <Image source={{ uri: item.image_url }} style={styles.image} />
+      <View style={{ flex: 1 }}>
+        <Image
+          source={{ uri: item.image_url }}
+          style={styles.image}
+          onLoadEnd={onLoadEnd}
+        />
+        <ActivityIndicator
+          style={styles.activityIndicator}
+          size="large"
+          animating={loading}
+        />
+      </View>
       <Text style={styles.name}>{item.name}</Text>
       <Text>
         {item.rating} Starts, {item.review_count} Reviews
@@ -22,6 +39,14 @@ const styles = StyleSheet.create({
     height: 120,
     borderRadius: 4,
     marginBottom: 5,
+  },
+  activityIndicator: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    color: '#00ff00',
   },
   name: {
     fontWeight: 'bold',
