@@ -37,7 +37,7 @@ const constants = {
     {
       text: 'Notes',
       icon: require('../app/assets/images/notes.png'),
-      name: 'bt_language',
+      name: 'bt_notes',
       position: 2,
     },
   ],

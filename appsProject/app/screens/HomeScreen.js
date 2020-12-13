@@ -36,6 +36,9 @@ const HomeScreen = ({ navigation }) => {
               case 'bt_search':
                 navigation.navigate('BusinessSearch');
                 break;
+              case 'bt_notes':
+                navigation.navigate('NotesNavigator');
+                break;
               default:
                 break;
             }
