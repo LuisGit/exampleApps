@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import NotesContext from '../../context/NotesContext';
 
 const NotesList = () => {
+  const value = useContext(NotesContext);
   return (
     <View>
-      <Text>Hello</Text>
+      <Text>Hello {value}</Text>
     </View>
   );
 };

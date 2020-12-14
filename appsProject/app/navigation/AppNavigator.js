@@ -1,5 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { ThemeProvider } from '../context/ThemeContext';
 
 //Screens
 import HomeScreen from '../screens/HomeScreen';
@@ -45,4 +46,14 @@ const AppNavigator = () => {
     </Stack.Navigator>
   );
 };
-export default AppNavigator;
+// export default AppNavigator;
+
+const Navigator = AppNavigator;
+
+export default () => {
+  return (
+    <ThemeProvider>
+      <Navigator />
+    </ThemeProvider>
+  );
+};

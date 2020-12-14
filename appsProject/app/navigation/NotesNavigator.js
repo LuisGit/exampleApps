@@ -1,5 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { NotesProvider } from '../context/NotesContext';
 
 //Screens
 import NotesList from '../screens/notes/NotesList';
@@ -26,4 +27,13 @@ const NotesNavigator = () => {
     </Stack.Navigator>
   );
 };
-export default NotesNavigator;
+
+const Navigator = NotesNavigator;
+
+export default () => {
+  return (
+    <NotesProvider>
+      <Navigator />
+    </NotesProvider>
+  );
+};

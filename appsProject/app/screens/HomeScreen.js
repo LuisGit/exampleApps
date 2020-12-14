@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text } from 'react-native';
 import { FloatingAction } from 'react-native-floating-action';
 import SliderView from '../components/slider/SliderView';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import SliderDoneButton from '../components/slider/SliderDoneButton';
+import ThemeContext from '../context/ThemeContext';
 import constants from '../constants';
 
 const HomeScreen = ({ navigation }) => {
+  const theme = useContext(ThemeContext);
   const [showApp, setShowApp] = useState(false);
 
   const onSliderDone = () => {
@@ -14,8 +16,9 @@ const HomeScreen = ({ navigation }) => {
   };
 
   if (showApp) {
+    const bgcolor = theme.colors.background;
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: bgcolor }}>
         <Text> Examples: </Text>
         <View>
           <Text>
