@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { Text } from '../styles/StyledCustomComponent';
 import { FloatingAction } from 'react-native-floating-action';
 import SliderView from '../components/slider/SliderView';
 import AppIntroSlider from 'react-native-app-intro-slider';
@@ -27,7 +28,9 @@ const HomeScreen = ({ navigation }) => {
           </Text>
         </View>
         <View>
-          <Text>Notes examplifies how to work with local data.</Text>
+          <Text variant="body" color="primary">
+            Notes examplifies how to work with local data.
+          </Text>
         </View>
         <FloatingAction
           ref={(ref) => {

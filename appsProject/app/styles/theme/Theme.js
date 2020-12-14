@@ -23,12 +23,12 @@ export const theme = {
   },
   textVariants: {
     header: {
-      fontFamily: 'Raleway',
+      fontFamily: 'Courier New',
       fontSize: 36,
       fontWeight: 'bold',
     },
     body: {
-      fontFamily: 'Merriweather',
+      fontFamily: 'Avenir-Book',
       fontSize: 16,
     },
   },
