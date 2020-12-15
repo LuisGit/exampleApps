@@ -29,7 +29,7 @@ const HomeScreen = ({ navigation }) => {
         </View>
         <View>
           <Text variant="body" color="primary">
-            Notes examplifies how to work with local data.
+            Notes examplifies how to work with local data and scoped context.
           </Text>
         </View>
         <FloatingAction

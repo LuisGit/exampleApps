@@ -19,7 +19,7 @@ const Box = ({ style, padding, margin, backgroundColor, ...rest }) => {
   );
 };
 
-export const Text = ({ style, variant, color, ...rest }) => {
+const Text = ({ style, variant, color, ...rest }) => {
   const theme = useContext(ThemeContext);
 
   return (
@@ -33,3 +33,5 @@ export const Text = ({ style, variant, color, ...rest }) => {
     />
   );
 };
+
+export { Box, Text };

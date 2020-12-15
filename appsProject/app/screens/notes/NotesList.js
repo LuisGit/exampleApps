@@ -1,12 +1,23 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
 import NotesContext from '../../context/NotesContext';
 
 const NotesList = () => {
-  const value = useContext(NotesContext);
+  const { data: notesList, addNote } = useContext(NotesContext);
   return (
     <View>
-      <Text>Hello {value}</Text>
+      <Text>Hello!</Text>
+      <Button
+        onPress={() => addNote({ title: 'Hello there!' })}
+        title="Tap me!"
+      />
+      <FlatList
+        data={notesList}
+        keyExtractor={(note) => `${note.id}`}
+        renderItem={({ item }) => {
+          return <Text>{item.title}</Text>;
+        }}
+      />
     </View>
   );
 };

@@ -28,7 +28,7 @@ export const theme = {
       fontWeight: 'bold',
     },
     body: {
-      fontFamily: 'Avenir-Book',
+      fontFamily: 'ChalkboardSE-Regular',
       fontSize: 16,
     },
   },
