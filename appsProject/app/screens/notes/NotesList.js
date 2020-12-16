@@ -1,21 +1,35 @@
 import React, { useContext } from 'react';
-import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  Button,
+  FlatList,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 import NotesContext from '../../context/NotesContext';
+import Icon from 'react-native-vector-icons/Entypo';
 
 const NotesList = () => {
-  const { data: notesList, addNote } = useContext(NotesContext);
+  const { data: notesList, addNote, deleteNote } = useContext(NotesContext);
   return (
     <View>
-      <Text>Hello!</Text>
       <Button
         onPress={() => addNote({ title: 'Hello there!' })}
-        title="Tap me!"
+        title="Add a Post!"
       />
       <FlatList
         data={notesList}
         keyExtractor={(note) => `${note.id}`}
         renderItem={({ item }) => {
-          return <Text>{item.title}</Text>;
+          return (
+            <View style={styles.row}>
+              <Text style={styles.rowTitle}>{item.title}</Text>
+              <TouchableOpacity onPress={() => deleteNote(item.id)}>
+                <Icon style={styles.rowIcont} name="trash" />
+              </TouchableOpacity>
+            </View>
+          );
         }}
       />
     </View>
@@ -24,4 +38,19 @@ const NotesList = () => {
 
 export default NotesList;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    borderTopWidth: 1,
+    borderColor: 'grey',
+  },
+  rowTitle: {
+    fontSize: 20,
+  },
+  rowIcont: {
+    fontSize: 24,
+  },
+});
