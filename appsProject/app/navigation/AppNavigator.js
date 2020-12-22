@@ -25,6 +25,9 @@ const AppNavigator = () => {
             backgroundColor: '#f4511e',
           },
           headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
         }
       )}>
       <Stack.Screen name="Home" component={HomeScreen} />
@@ -41,7 +44,7 @@ const AppNavigator = () => {
       <Stack.Screen
         name="NotesNavigator"
         component={NotesNavigator}
-        options={{ title: 'Notes' }}
+        options={{ title: 'Notes', headerShown: false }}
       />
     </Stack.Navigator>
   );

@@ -15,15 +15,27 @@ const NotesNavigator = () => {
     <Stack.Navigator
       initialRouteName="NotesList"
       screenOptions={({ route, navigation }) => ({
-        headerShown: false,
+        headerShown: true,
         defaultNavigationOptions: () => ({
           gesturesEnabled: false,
         }),
       })}>
-      <Stack.Screen name="NotesList" component={NotesList} />
-      <Stack.Screen name="CreateNote" component={CreateNote} />
+      <Stack.Screen
+        name="NotesList"
+        component={NotesList}
+        options={{ title: 'List of Notes' }}
+      />
+      <Stack.Screen
+        name="CreateNote"
+        component={CreateNote}
+        options={{ title: 'New note' }}
+      />
       <Stack.Screen name="EditNote" component={EditNote} />
-      <Stack.Screen name="NoteDetails" component={NoteDetails} />
+      <Stack.Screen
+        name="NoteDetails"
+        component={NoteDetails}
+        options={({ route }) => ({ title: route.params.title })}
+      />
     </Stack.Navigator>
   );
 };

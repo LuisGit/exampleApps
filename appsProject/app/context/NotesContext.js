@@ -8,11 +8,12 @@ const NotesContext = React.createContext();
 const notesReducer = (state, action) => {
   switch (action.type) {
     case addANote:
+      const index = state.length + 1;
       return [
         ...state,
         {
-          id: state.length + 1,
-          title: `${action.payload} ${state.length + 1}`,
+          id: index,
+          title: `${action.title} ${index}`,
         },
       ];
     case deleteANote:
@@ -35,7 +36,7 @@ export const NotesProvider = ({ children }) => {
   const [note, dispatch] = useReducer(notesReducer, []);
 
   const addNote = ({ title }) => {
-    dispatch({ type: addANote, payload: title });
+    dispatch({ type: addANote, title });
   };
   const deleteNote = (id) => {
     dispatch({ type: deleteANote, payload: id });
