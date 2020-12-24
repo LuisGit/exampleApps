@@ -4,6 +4,7 @@ const palette = {
   red: '#CD0E61',
   black: '#0B0B0B',
   white: '#F0F2F3',
+  gray: '#f9f9fa',
 };
 
 export const theme = {
@@ -14,6 +15,7 @@ export const theme = {
     success: palette.green,
     danger: palette.red,
     failure: palette.red,
+    water: palette.gray,
   },
   spacing: {
     s: 8,
@@ -30,6 +32,11 @@ export const theme = {
     body: {
       fontFamily: 'ChalkboardSE-Regular',
       fontSize: 16,
+    },
+    input: {
+      fontSize: 18,
+      borderWidth: 1,
+      padding: 5,
     },
   },
 };

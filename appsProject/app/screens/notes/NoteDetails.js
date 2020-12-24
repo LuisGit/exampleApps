@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import NotesContext from '../../context/NotesContext';
 
 const NoteDetails = ({ route, navigation }) => {
@@ -10,7 +10,7 @@ const NoteDetails = ({ route, navigation }) => {
   return (
     <View>
       <Text>{myNote.title}</Text>
-      <Button onPress={() => navigation.goBack()} title="Back" />
+      <Text>{myNote.content}</Text>
     </View>
   );
 };

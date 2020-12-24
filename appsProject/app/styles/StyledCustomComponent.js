@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text as RNText } from 'react-native';
+import { View, Text as RNText, TextInput as RNInput } from 'react-native';
 
 import ThemeContext from '../context/ThemeContext';
 
@@ -34,4 +34,20 @@ const Text = ({ style, variant, color, ...rest }) => {
   );
 };
 
-export { Box, Text };
+const TextInput = ({ style, variant, color, ...rest }) => {
+  const theme = useContext(ThemeContext);
+
+  return (
+    <RNInput
+      style={{
+        color: theme.colors[color],
+        borderColor: theme.colors.foreground,
+        ...theme.textVariants[variant],
+        ...style,
+      }}
+      {...rest}
+    />
+  );
+};
+
+export { Box, Text, TextInput };

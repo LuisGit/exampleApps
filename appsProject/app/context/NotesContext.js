@@ -13,7 +13,8 @@ const notesReducer = (state, action) => {
         ...state,
         {
           id: index,
-          title: `${action.title} ${index}`,
+          title: action.title,
+          content: action.content,
         },
       ];
     case deleteANote:
@@ -35,8 +36,8 @@ export const NotesProvider = ({ children }) => {
 
   const [note, dispatch] = useReducer(notesReducer, []);
 
-  const addNote = ({ title }) => {
-    dispatch({ type: addANote, title });
+  const addNote = ({ title, content }) => {
+    dispatch({ type: addANote, title, content });
   };
   const deleteNote = (id) => {
     dispatch({ type: deleteANote, payload: id });

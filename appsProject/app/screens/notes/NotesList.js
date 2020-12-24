@@ -2,7 +2,6 @@ import React, { useContext, useLayoutEffect } from 'react';
 import {
   View,
   Text,
-  Button,
   FlatList,
   TouchableOpacity,
   StyleSheet,
@@ -11,22 +10,20 @@ import NotesContext from '../../context/NotesContext';
 import Icon from 'react-native-vector-icons/Entypo';
 
 const NotesList = ({ navigation }) => {
-  const { data: notesList, addNote, deleteNote } = useContext(NotesContext);
+  const { data: notesList, deleteNote } = useContext(NotesContext);
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <Button onPress={() => navigation.navigate('CreateNote')} title="+" />
+        <TouchableOpacity onPress={() => navigation.navigate('CreateNote')}>
+          <Icon style={styles.plusIcon} name="plus" />
+        </TouchableOpacity>
       ),
     });
   }, [navigation]);
 
   return (
     <View>
-      <Button
-        onPress={() => addNote({ title: 'Hello there!' })}
-        title="Add a Post!"
-      />
       <FlatList
         data={notesList}
         keyExtractor={(note) => `${note.id}`}
@@ -36,7 +33,7 @@ const NotesList = ({ navigation }) => {
               onPress={() =>
                 navigation.navigate('NoteDetails', {
                   id: item.id,
-                  title: `Note ${item.id}`,
+                  title: item.title,
                 })
               }>
               <View style={styles.row}>
@@ -49,7 +46,6 @@ const NotesList = ({ navigation }) => {
           );
         }}
       />
-      <Button onPress={() => navigation.goBack()} title="Back" />
     </View>
   );
 };
@@ -69,6 +65,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   rowIcont: {
+    fontSize: 24,
+  },
+  plusIcon: {
+    marginRight: 15,
     fontSize: 24,
   },
 });
