@@ -1,5 +1,11 @@
 import React, { useState, useContext } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  ActivityIndicator,
+} from 'react-native';
 import { TextInput } from '../../styles/StyledCustomComponent';
 import NotesContext from '../../context/NotesContext';
 import Toast from 'react-native-toast-message';
@@ -7,15 +13,21 @@ import Toast from 'react-native-toast-message';
 const CreateNote = ({ navigation }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [showLoader, setLoader] = useState(false);
   const { addNote } = useContext(NotesContext);
 
   const addPost = () => {
-    addNote({ title, content });
-    Toast.show({
-      text1: 'New note added!',
-      text2: 'Congrats 👋!',
-      type: 'success',
-      position: 'bottom',
+    setLoader(true);
+    addNote({ title, content }, () => {
+      setLoader(false);
+      setTitle('');
+      setContent('');
+      Toast.show({
+        text1: 'New note added!',
+        text2: 'Congrats 👋!',
+        type: 'success',
+        position: 'bottom',
+      });
     });
   };
 
@@ -37,6 +49,7 @@ const CreateNote = ({ navigation }) => {
         onChangeText={setContent}
       />
       <Button onPress={addPost} title="Add Note" />
+      {showLoader && <ActivityIndicator />}
     </View>
   );
 };

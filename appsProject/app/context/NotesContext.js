@@ -8,13 +8,12 @@ const NotesContext = React.createContext();
 const notesReducer = (state, action) => {
   switch (action.type) {
     case addANote:
-      const index = state.length + 1;
       return [
         ...state,
         {
-          id: index,
-          title: action.title,
-          content: action.content,
+          id: Math.floor(Math.random() * 9999),
+          title: action.payload.title,
+          content: action.payload.content,
         },
       ];
     case deleteANote:
@@ -36,9 +35,16 @@ export const NotesProvider = ({ children }) => {
 
   const [note, dispatch] = useReducer(notesReducer, []);
 
-  const addNote = ({ title, content }) => {
-    dispatch({ type: addANote, title, content });
+  const addNote = ({ title, content }, callback) => {
+    try {
+      // here I can add an API call if needed.
+      dispatch({ type: addANote, payload: { title, content } });
+      callback();
+    } catch (error) {
+      console.log('error => ', error);
+    }
   };
+
   const deleteNote = (id) => {
     dispatch({ type: deleteANote, payload: id });
   };

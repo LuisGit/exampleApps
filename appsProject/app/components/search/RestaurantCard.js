@@ -10,7 +10,7 @@ const ResturantCard = ({ item }) => {
 
   return (
     <View style={styles.container}>
-      <View style={{ flex: 1 }}>
+      <>
         <Image
           source={{ uri: item.image_url }}
           style={styles.image}
@@ -21,7 +21,7 @@ const ResturantCard = ({ item }) => {
           size="large"
           animating={loading}
         />
-      </View>
+      </>
       <Text style={styles.name}>{item.name}</Text>
       <Text>
         {item.rating} Starts, {item.review_count} Reviews
