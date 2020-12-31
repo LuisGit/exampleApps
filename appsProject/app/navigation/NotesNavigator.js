@@ -30,7 +30,11 @@ const NotesNavigator = () => {
         component={CreateNote}
         options={{ title: 'New note' }}
       />
-      <Stack.Screen name="EditNote" component={EditNote} />
+      <Stack.Screen
+        name="EditNote"
+        component={EditNote}
+        options={{ headerBackTitle: 'Back', title: 'Edit your note' }}
+      />
       <Stack.Screen
         name="NoteDetails"
         component={NoteDetails}

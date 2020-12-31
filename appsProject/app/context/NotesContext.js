@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 
 const addANote = 'addNote';
 const deleteANote = 'deleteNote';
+const editNote = 'editNote';
 
 const NotesContext = React.createContext();
 
@@ -18,6 +19,11 @@ const notesReducer = (state, action) => {
       ];
     case deleteANote:
       return state.filter((note) => note.id !== action.payload);
+    case editNote:
+      const newArray = state.map((note) => {
+        return note.id !== action.payload.id ? note : action.payload;
+      });
+      return [...newArray];
     default:
       return state;
   }
@@ -49,8 +55,19 @@ export const NotesProvider = ({ children }) => {
     dispatch({ type: deleteANote, payload: id });
   };
 
+  const updateNote = (item, callback) => {
+    console.log(`item is ${JSON.stringify(item)}`);
+    try {
+      dispatch({ type: editNote, payload: item });
+      callback();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <NotesContext.Provider value={{ data: note, addNote, deleteNote }}>
+    <NotesContext.Provider
+      value={{ data: note, addNote, deleteNote, updateNote }}>
       {children}
     </NotesContext.Provider>
   );
